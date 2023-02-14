@@ -67,3 +67,23 @@ Normalmente essas linguagens geram programas que precisam de uma alta performanc
 
 interpretadores encontra linguagens como Java Script, Python, PHP.
 Essas linguagens valorizam bastante o processo de desenvolvimento de software, a facilidade de desenvolvendo dessas linguagens pode acabar sendo maior do que nos programas compilados.
+
+Na tentativa de minimizar os pontos negativos, existem técnicas mais modernas que caem no caso intermediário de compilação e interpretação, uma delas é o just-in-time compilation ou JIT Compilation, significa compilação na hora certa.
+
+Porque em vez de você compilar o seu código inteiro, você pode interpretar o seu código e se você vir que está usando uma função específica você vai e compila a função inteira no momento de execução e manda o código binário da função inteira para computador executar
+esse meio termo é tão famoso que com a implementação da Google projeto que é chamado de V8. nodeJS
+É ela que está rodando nos navegadores da Google o Chrome e também é implementado no JS que é implementação para você fazer códigos backend de Javascript. Esse método de compilação na hora certa é bem comum para você transformar códigos interpretados, para melhorar para ter uma performance maior
+
+Além da compilação na hora certa,
+ existe outro caso bem peculiar de meio-termo entre interpretação e compilação, que é o caso do Java - a implementação de Java queria resolver um problema bem específico, pelo menos um desses era um desses problemas que vi resolver que é você puder compilar o seu código e rodar em diversas máquinas diferentes.
+
+ Para resolver isso, o código-fonte que vai executar, primeira coisa que você faz é compilar esse código-fonte, mas em vez de você gerar um código binário para mandar direto para o computador, vai gerar um código intermediário chamado de Byte Code que você pode conhecer como .class do Java.
+ Esse byte code é um código específico do Java, mas não é específico da máquina que você está rodando e para executar ele de verdade você tem que passar por um segundo tradutor, um interpretador e você pode conhecer como JVM - máquina virtual Java.
+ E ele que vai pegar seu byte code, interpretar linha por linha e executar, dessa forma você consegue pelo compilador ter todo o contexto para fazer otimizações e verificar os erros antes de executar.
+ O fato de você ter um byte code que não é específico do computador você pode mandá-lo para diversas máquinas e elas tendo o JVM instalado, conseguem executar o seu programa.
+
+## neste capitulo entendemos sobre"
+ 1. Como funciona a linguagem que o computador entende: a linguagem de máquina;
+ 2. O computador precisa de um programa tradutor para transformar um código em uma linguagem de programação de alto nível para linguagem de máquina;
+ 3. Existem, em geral, dois tipos de tradutores: compiladores e interpretadores;
+ 4. Quais as diferenças entre compiladores e interpretadores, e suas implementações modernas.
