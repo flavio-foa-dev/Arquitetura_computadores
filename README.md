@@ -217,3 +217,84 @@ Você pode abstrair isso e imaginar que na verdade a memória RAM é só uma tab
 - Como um programa em código de máquina é executado no computador;
 - A importância do clock do processador para a velocidade de processamento;
 - Que existem limitações de memória num computador e como criar programas eficientes para contornar esse problema.
+
+Conseguimos ver como que o processador executa nosso programa, sempre na sequência de buscar, decodificar e executar.
+ao longo dos anos a única coisa que diferenciava o modelo era a velocidade do clock.
+
+Foi necessário criar novas alternativas para melhorar o desempenho do processador e olhando o jeito que construiu nosso processador vê que tem que fazer a sequência de buscar, decodificar, executar uma instrução, isso deixa o processador bem ansioso.
+
+quando for buscar, decodificar, executar, em vez de começar a buscar só no final que terminar de executar, o que pode fazer é quando estiver decodificando a instrução o processador ir e pegar a próxima instruções que vão ficar numa linha de montagem, uma no estágio de buscar, outra em decodificar e outra em executar. Sempre esperando para serem executadas.
+
+Dessa forma consegue executar uma instrução a cada ciclo de clock em vez de uma instrução a cada três, consegue triplicar a velocidade com que nosso processador executa as operações Isso é chamado de pipeline de instruções
+
+Melhorar bastante o processador, mas se você for ver ainda tem melhorias que pode fazer, se pensar no processador quando ele está buscando coisas na memória para memória RAM, a unidade lógica não está fazendo nada.
+Ela está parada, então poderia mandar alguma instrução de conta para ela, já ir executando para ter o resultado quando precisar.
+duplicar toda a pipeline. Para que consiga fazer duas instruções a cada ciclo de clock, então consegue essas duas por vez, consegue buscar duas instruções por vez. Dessa forma ainda duplica a velocidade de execução das instruções do processador
+
+tem processador que é dual core, que tem dois núcleos, ou quad-core.
+
+Em 1965, Gordon Moore previu que o número de componentes de um circuito integrado (transistores) dobraria a cada período de 18 meses, resultando num processador duas vezes mais rápido. Isso originou a chamada Lei de Moore. Essa lei virou uma medida econômica das empresas e é responsável pelo crescimento exponencial de performance da tecnologia que vemos nas últimas décadas.
+
+
+# dispositivo de entrada e saída I/O,
+
+Temos o computador que é a CPU que é responsável por processar os dados que manda para ela e a memória RAM que guarda todos os dados e instruções programas que está trabalhando no momento.
+
+Em volta disso tem dispositivos de entrada e saída,
+como entrada temos o teclado, o mouse a webcam o microfone.
+como saída temos a tela,  o nosso monitor, o fone de ouvido, o alto-falante a impressora.
+
+o HD e SSD, também são considerados como dispositivos de entrada e saída,
+
+são os drivers de dispositivo que consegue abstrair várias particularidades destes vários dispositivos de entrada e saída,
+e o computador através desses drives vai saber como lidar com os didpositivos.
+
+vamos dar uma olhada em dois dos principais dispositivos que interagimos com o computador que é o monitor e o teclado.
+
+### MONITOR
+temos diversas gamas de gráficos, cores diferentes, formas, mas no fundo no fundo todos esses gráficos que olha no computador é só um conjunto de pequenos quadradinhos um do lado do outro que tem cores diferentes.
+
+Cada quadradinho desse é chamado de pixel, cada quadradinho desse é uma fonte de luz, onde só muda a cor que ele vai ter,
+a cor de um pixel é dada por três componentes: o vermelho que representa como R de Red, o verde apresenta com G de green e o azul representa B de blue.  RGB
+
+esses pixels são atualizados na tela , mas em geral os pixels são atualizados linha por linha da esquerda para direita.
+Sempre quando uma imagem vai mudar no monitor do computador,
+o computador vai ter que ir lá atualizar pixel por pixel sequencialmente na tela do monitor,
+E para fazer isso com cada um deles é preciso de vários cálculos complexos
+
+ma tela full HD, por exemplo, tem 1920 pixels por 1080 pixels isso dá aproximadamente uma tela com 2 milhões de pixels
+vendo um vídeo com 60 FPS - 60 frames por segundo, ele está em Full HD tem que fazer atualização de 120 milhões de pixels por segundo.
+
+Isso é um processamento muito grande, que o processador vai ter que fazer, as atualização dos pixels na tela.
+o processamento muito grande e o resto das coisas que os nossos programas estão querendo executar?
+Para solucionar esse problema, a maioria dos computadores usam componentes específicos para esse tipo de serviço, que é chamada de placa de vídeo
+
+Hoje em dia essas placas de vídeo já vêm juntas com o chip do processador, que você talvez conheça como placa de vídeo integrada.
+
+# Teclado
+
+O teclado tem um conjunto de fios energizados que passam pelas linhas do teclado
+e um conjunto de fios desenergizados que passam pelas colunas do teclado,
+então cada tecla vai ser uma celula de linha e coluna.
+
+Se observar uma tecla específica, ela pode ser interpretada como interruptor que liga alguma linha energizada com alguma coluna desenergizada, dessa forma se nós apertarmos a tecla o que ela vai fazer com a linha energizada passa energia para coluna desenergizada.
+
+Ou seja, emitindo o sinal de que a tecla A foi pressionada, assim quando o teclado vir essa combinação específica de linha e coluna, ele vai emitir sinal dizendo caractere “A” pressionado.
+ele envia o sinal de que o caractere na posição 11 foi pressionado. Ele apenas avisa qual foi a posição que o caractere foi pressionado
+o computador atraves de uma tebela ele sabera que tecla foi selecionada e tabela sao diferentes em cada pais
+
+
+Quando usamos o computador executamos várias ações ao mesmo tempo, mexendo no navegador, acessando a internet, enquanto ouve música e com a janela do lado mexendo no programa, um editor de texto ou em outro programa e tudo isso ao mesmo tempo
+Porém, o computador deve estar rodando até dezenas de programas tudo de uma vez e isso está muito acima do processamento paralelo de um processador quad-core.
+ele executa um pouco a música, mexe um pouquinho do mouse, dos programa etc,  e isso muito rapido
+Essa ideia é chamada de multitasking ou multitarefa, é assim que executa vários programas
+Para fazer SO ou sistema operacional precisa uma regra para que a execução de cada um desses seja alternada e para isso ele vai dar  um tempo para cada programa, um tempo que cada programa vai ter que ficar executando.
+Depois disso ele coloca esses programas numa fila, então o primeiro da fila vai e começa a ser executado durante o tempo dele e quando o tempo acabar ele volta para o final da fila; e o próximo da fila passa para ser executado.
+
+Dessa forma que o sistema operacional consegue organizar que todo mundo seja executado um pouquinho e cria essa ilusão de paralelismo, ao mesmo tempo para aumentar essa ilusão de paralelismo com sistemas que interagimos, certas ações que executa nos dispositivos podem criar um sinal para o sistema operacional.  E burla a fila e entrar para ser executada primeiro
+
+# o que apredemos neste capitolo
+- As diversas otimizações feitas no processadores modernos, como pipelining e multi-core;
+- Como podemos nos comunicar com o computador por meio dos dispositivos de entrada e saída;
+- Como monitores e teclados funcionam;
+- Como o computador executa vários programas ao mesmo tempo por meio de multitasking.
