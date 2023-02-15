@@ -129,7 +129,7 @@ Você pode abstrair isso e imaginar que na verdade a memória RAM é só uma tab
  # CPU  vem de Central Process Unit ou unidade central de processamento
  E a CPU que vai receber as instruções da memória RAM
  e vai executá-las,
- ele e dividido em 3 partes
+ vamos falar das 3 partes  cache vamos falar depois
 
  1. UC "unidade de controle"
     E a parte que vai receber instruções da memória RAM.
@@ -152,6 +152,7 @@ Você pode abstrair isso e imaginar que na verdade a memória RAM é só uma tab
     Vai ser desse lugar, desses registradores que vai receber os valores para somar e vai guardar os resultados das operações.
     Então são os registradores que guardam, que são responsáveis pela memória do processador,
     Ele é memória mais básica que está dentro do nosso processador.
+  4. cache
 
     Quando a RAM envia uma instrução ao processador a primeira coisa que ele faz é guardar dentro do registrador; ele guarda também a posição de instrução atual,
     O registrador é responsável por guardar os valores intermediários da operacao
@@ -298,3 +299,82 @@ Dessa forma que o sistema operacional consegue organizar que todo mundo seja exe
 - Como podemos nos comunicar com o computador por meio dos dispositivos de entrada e saída;
 - Como monitores e teclados funcionam;
 - Como o computador executa vários programas ao mesmo tempo por meio de multitasking.
+
+# cache: trazer para perto
+
+O processador faz um pedido de dado para memória RAM,
+ele vai fazer com que o pedido de dado viaje até a memória,
+a memória precisa decodificar o endereço, saber onde que o processador que pega o dado.
+Precisa encontrar o dado
+passar o caminho todo de volta
+para enviar o dado para o processador
+todo esse processo levar até dezenas de ciclos de clock
+só para ter esse dado da memória RAM,
+nesse ciclo de clock o processador estará lá esperando sem ter o que fazer.
+
+para resover vamos usar memoria, mas como assim ?  vamos la
+Teremos dois tipos de memória,
+memória RAM e ela é construída por material que se chama DRAM, que vem de dynamic RAM, ou RAM dinâmica, esse tipo de RAM é mais barata, consegue armazenar grandes quantidades de memória na escala de GB.
+Mas ela tem problema que é mais lenta, para buscar informações demora bastante
+existe um segundo tipo de memória RAM que é chamado de que SRAM, vem de static RAM, RAM estática, é muito mais rápida que DRAM.
+Mas é mais cara, então não consegue nem de perto armazenar a mesma quantidade que a DRAM,
+
+E vai ser SSRAM que vai auxiliar o nosso processo de comunicação com a memória RAM
+
+pegamos o processador e adicionamos essa memória RAM estática dentro do processador.
+a todo momento, e será essa memória rápida que vai querer guardar os dados que estamos utilizando no momentolá que os dados estão sendo
+Esse tipo de memória no processador que guarda os dados que estamos utilizando no momento é chamada de memória cache,
+
+ela funciona
+o processador quer pegar um dado, uma instrução lá na memória RAM, em vez do processador ir pegar um dado na memória e executar o dado dele no processador, ele pega um bloco inteiro e copia na memória cache
+
+a memoria cache não é uma coisa só
+Ela é dividida em várias partes no processador.
+
+temos nossa CPU,
+ tem uma parte que é chamada de cache nível 1,
+ tem um primeiro nível de cache que fica bem colada com CPU é chamada de CacheL1.
+ Que vem do inglês level - nível, L1, tem um segundo nível de cache chamado de Cache L2, um pouco maior que o L1 e um pouco mais lento
+Digamos que você não tenha um core, tenha um processador de várias cores.
+ processador dual-core,
+ cada core vai ter o seu próprio cache e o próprio CacheL2, também vai ter um terceiro nível de cache que é o CacheL3,
+ que vai ser compartilhado com todas as cores.
+
+ Todos eles vão poder acessar o próprio CacheL3, ele vai ser bem maior que os outros dois e também um pouco mais lento.
+
+ essas divisoe  subdivisões de memória e referente a hierarquia de memória.
+ ### hierarquia de memória. 1
+
+ 1. registradores 1 ciclo-clock/s  500 Bytes
+ 2. cache l1      700GB/s          64 KB
+ 3. cache l2      200GB/s          500 KB
+ 4. cache l3      150GB/s          4MB
+ 5. ram           10GB/s           8 GB
+ 6. ssd           2GB/s            500 GB
+ 7. hd            200MB/s          4TB
+ 8. cloud         2MB/s            PB - EB
+
+Todo sistema é construído de forma que cada camada só precisa se comunicar com as camadas vizinhas, a RAM apenas precisa mandar para L3 e ele vai mandar para os próximos em seguida
+
+Um princípios da computação que é chamado de princípio da localidade.
+localidade temporal que significa se eu acessei nesse lugar recentemente eu vou querer acessar de novo em breve
+localidade espacial que significa que se eu acessei aqui, vou acessar o vizinho em breve.
+
+vamos acessar sempre a mesma posicao de memória coloca esse dado na memória mais rápida que der.
+E outos dados podem ficar numa mais lenta, porque ela vai ser acessada menos,
+desta forma a memória é organizada de hierárquica,
+o sistema operacional, vários algoritmos são organizados, são estruturados de forma a permitir esse princípio da localidade.
+Desta forma que consiga explorar esse tipo de princípio e manter as coisas funcionando de forma otimizada.
+
+
+## Para voce saber
+Pode parecer estranho ouvir falar no uso de fitas magnéticas hoje em dia. Esse tipo de tecnologia ficou muito popular entre os anos de 1970 e 1990 para o armazenamento de áudio, com as fitas cassetes, mas quase não se ouve mais falar delas com a chegada de novas tecnologias de armazenamento.
+
+Uma das grandes desvantagens das fitas magnéticas é que elas são muito lentas para ler e escrever! A coisa complica mais se você precisa fazer o acesso aleatório de dados, porque a máquina precisaria rebobinar toda a fita para conseguir ir de um ponto da memória até outro. Por isso, elas foram facilmente substituídas por HDs e SSDs no uso diário em computadores pessoais.
+
+Por outro lado, fitas magnéticas podem armazenar enormes quantidades de dados por um preço baixo e possuem um tempo de vida bem alto. Estimativas de 2016 da Forbes mostram que HDs são 65% mais caros que fitas. Além disso, você pode encontrar fitas com 12 TB de capacidade (e, a partir de 2030, podem aparecer modelos com 400 TB). Ainda, fitas tem um tempo de vida de até 30 anos, 6 vezes maior que um HD.
+
+Esse é o cenário perfeito para momentos em que precisamos armazenar grandes quantidades de dados que vamos mexer muito raramente: os backups. Muitos dados no mundo são armazenados em fitas, como física de partículas, arquivos nacionais, grandes filmes e até bancos. Neste vídeo, você pode ver como a Organização Europeia para a Pesquisa Nuclear (CERN) utiliza fitas para armazenar os 1 GB por segundo de dados que eles captam em pesquisas.
+
+Para saber mais sobre o assunto, você pode conferir o artigo da IEEE Spectrum (em inglês).
+<hr>
