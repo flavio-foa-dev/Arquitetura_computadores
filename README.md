@@ -378,3 +378,148 @@ Esse é o cenário perfeito para momentos em que precisamos armazenar grandes qu
 
 Para saber mais sobre o assunto, você pode conferir o artigo da IEEE Spectrum (em inglês).
 <hr>
+
+# Processador de 32 ou 64 bits
+Qual a diferença de 32 bits para 64?
+significa o tamanho de informação que pode ser processada pela CPU,
+pelo processador em um ciclo de clock, ou seja, esse tipo de informação são os dados guardados no registrador.
+
+um processador ele vai ter os registradores que guardam a instrução atual ou acumulador que guarda dados
+
+Essas informações são guardadas em uma sequência de 32 bits, ou seja, uma sequência de 32 zeros ou uns, então um de 32 bits vai ter largura 32 bits, vai ser a quantidade de informação que ele consegue guardar em um registrador.
+
+Se tem um processador de 64-bits vai ter o dobro de tamanho, cada instrução vai ocupar 64 bits e as formas 64 em zeros e uns, se tem tamanho do registrador que muda, significa que as instruções mudam também.
+
+Consegue ter mais performance , como tem mais memória, consegue fazer otimizações complexas durante o processamento,
+mesmo assim esse tipo de vantagem ainda pode ser discutível não é a principal vantagem para você escolher um processador de 64.
+
+A maior vantagem em todas elas é memória
+para o processador querer acessar alguma posição da memória RAM ele tem um registrador que guarda o endereço da memória
+
+O endereço na memória que ele vai apontar RAM e quais são os valores que ele consegue representar
+Os registradores são conjuntos de zeros e uns, cada um representando o valor conforme for ligando zeros e uns.
+
+Vamos pensar se o registrador tem um bit, quantos valores consegue armazenar? Como é um bit é só zero e um, então zero ou um, consegue armazenar dois valores.
+
+A lógica com 32 bits representar 2 elevados a 32 bits
+O maior endereço da memória que consegue representar, referenciar na RAM é o valor 2 elevado a 32 – 1,
+não consegue representar valores maiores que isso, esse é o máximo.
+Esse valor é aproximadamente 4 GB. Ou seja, no processador de 32 não consegue ter mais do que 4 GB, porque não dá para apresentar só não tem memória no registrador o suficiente para caber esse valor
+
+por isso que foi criado o processador de 64-bits, com 64 bits dobra o número de bits usando. Ou seja, consegue representar, referenciar valores até 264 – 1, que é aproximadamente 16 bilhões de GB de RAM.
+
+São 16 bilhões de GB de RAM, diminui muito a nossa alimentação de memória, vamos voltar para nossa situação atual. Porque é interessante escolher entre um instalador de 32 bits e de 64 bits?
+
+32 bits nao vai morrer, eles vão encontrar algum nicho para eles
+8 bits ainda existem, que estão lá na nossa máquina de lavar.
+se você tem um processador de 32 bits você precisa usar o instalador que vai ter instruções de 32 bits.
+
+32 bits estão ficando cada vez menos populares nos computadores pessoais. ele limita sua memoria ram
+
+### neste capito apredemos sobre
+
+- A função da memória cache para melhorar a performance do computador;
+- Como as memórias de um computador são divididas de forma hierárquica;
+- O que é o princípio da localidade;
+- Qual a diferença entre processadores 32 e 64 bits,
+- qual é o impacto disso na hora de escolher o instalador de um programa 32 e 64 bits.
+
+
+# Números inteiros
+
+Quando executamos um código o valor que guardamos nas variáveis ficam armazenadas na memória
+
+1 bit para armazenar esse número, o bit representa ligado, desligado, representa zero e um
+Quatro valores, dobramos e se continuar dobrando para 3 bis representa oito , se continuar essa situação com 7 bites tem 128 valores que pode representar, zero a 127. 1 Bite
+
+São valores positivos, se eu quiser representar valores negativos pode pegar adicionar mais um bit que será um bit de sinal
+
+# Caracteres
+
+Vimos como representar números inteiros, mas como nós fazemos isso, para caracteres? é a mesma coisa
+queremos representar aquelas letras de a-z, tem um alfabeto e diz que A é zero, B é 1 e assim por diante até z é igual a 25.
+Sempre que nós quisermos falar de A vamos representar na memória 0, quando quiser falar de b de 1, sempre quando quiser falar de um caractere representa um número correspondente dele na memória e nisso começou 25 valores dá para usar 5 bits.
+
+Temos letras de a-z, mas queremos falar de letras maiúsculas e letras minúsculas
+tem um problema, que vai ser zero A minúsculo ou maiúsculo?
+
+Qual vai ser a ordem desse grupo de caracteres? Alguém precisa decidir isso, porque senão vai virar uma confusão na hora de se comunicar cada um escolher um padrão; para arrumar esse problema , foi criado o ASCII.
+
+American Standard Code for Information Interchange que significa código padrão americano para intercâmbio de informação, ele foi um código surgido no começo da Computação que codifica os caracteres em 7 bits.
+
+Conseguimos representar caracteres maiúsculos é minúsculo, números e alguns símbolos especiais usando 7 bits, a tabela de todos os caracteres apresentados pelo ASCII além de símbolos temos caracteres invisíveis como espaço e Tab e esse foi uma das codificações mais influentes de todas.
+
+Usamos a tabela ainda em certos momentos, certas aplicações, há algumas ressalvas, mas na época e funcionava super bem para estadunidenses porque era mais ou menos tipo de caracteres que eles usavam e conseguiram representar graficamente todos os textos da época.
+
+O tempo passou e os computadores começaram a ficar padronizados em blocos de 8 bits ou 1 byte, a memória era sempre representada de byte em byte. Como ASCII era feito em 7 B tinha esse B adicional para representar mais coisas – com o adicional tem o dobro de caracteres, dobra número de caracteres tão assim pode representar ainda mais símbolos nessa região de memória.
+
+Nisso surgiram vários grupos, cada grupinho definia quais seriam esses símbolos adicionais ao incrementar esse bit adicional e uma dessas codificações surgidas a partir de uma extensão do ASCII foi o Latin1.
+
+O Latin acrescentava caracteres acentuadas e mais símbolos, sempre pensando no uso para caracteres de línguas latinas, dessas formas consegue ver na tabelinha com todos os caracteres do Latin1 acima dos pontinhos tem ASCII e abaixo os caracteres adicionais do Latin1
+
+Mas ainda tinha um outro problema, pensa no mundo, o mundo é composto por vários países vários povos, com línguas diferentes e símbolos diferentes, na época que surgiu esses países também usavam computadores, eles usavam codificações próprias.
+
+Codificações para representar caracteres em japonês e caracteres coreanos. O problema é que essas codificações eram totalmente incompatíveis entre si se por exemplo um americano quisesse mandar algum texto de forma digital para japonês ele usasse a própria a classificação dele para entender simplesmente não iam conseguir se comunicar.
+
+E para isso surgiu o UNICODE, a ideia é tratar de letras, caracteres e os números respectivos deles, aquela tabelinha que diz qual o símbolo vai ser qual número e mais para frente usa os números para representar na memória.
+
+Para representar todo UNICODE, qualquer caractere dele, vai precisar de 3 B, tudo bem, mas pensa comigo o ASCII e o Latin1 usavam um byte para cada carácter e eles eram a maior parte da web na época, eram a maior parte dos textos escritos digitalmente
+
+E se eles tivessem que mudar para essa nova codificação do UNICODE, eles vão gastar dois bytes a mais para representar a mesma coisa que já fazia antes e ia ser um gasto de armazenamento muito grande e daria vários problemas porque vários computadores não iam ser compatíveis com a forma dessa codificação
+
+ Era nessa hora achar outra alternativa e para resolver esse problema foi criado o UTF8, a ideia é ser tão genial em relação as outras codificações existentes é que ela não tem número fixo de bytes para todos os caracteres. Cada caractere tem o tamanho variado, ela foi criada para que os caracteres que são ASCII possam ser representadas usando 1 byte
+
+ E é por isso, por conta de todas as qualidades da codificação UTF-8 que ela é a solução mais popular nos dias de hoje, você pega 2020 a web 95% usam o UTF-8, muito provavelmente todos os textos que você escreve em programas, se você pega em sites web que você consegue escrever com acento são codificados UTF-8.
+
+ Vimos a codificação UTF-8 para representar os vários caracteres do sistema Unicode, mas essa não é a única codificação para isso. Existem outros dois sistemas UTF-16 e UTF-32. Vamos ver a diferença entre esses três.
+
+ Atenção: todos os três sistemas conseguem codificar todos os caracteres do Unicode. Apenas a quantidade de bits que eles usarão para fazer isso que muda.
+
+ UTF-8
+Essa codificação representa os caracteres em pedaços de 8 bits e sua grande vantagem é manter os textos codificados apenas em ASCII (a grande maioria da Web no passado) intactos. Ele tem um tamanho variável e cada caractere pode ocupar 8, 16, 24 ou 32 bits.
+
+Essa é a codificação mais comum na web hoje.
+
+UTF-16
+Essa codificação representa os caracteres em pedaços de 16 bits. Isso significa que a codificação não é mais compatível com ASCII e ocupa o dobro de memória em textos que possuem apenas caracteres da língua inglesa. Ele tem um tamanho variável e cada caractere pode ocupar 16 ou 32 bits.
+
+Sua grande vantagem é ocupar menos espaço quando o texto possui muitos caracteres asiáticos (UTF-8 usaria 3 bytes por caractere e UTF-16 apenas 2). Mesmo assim, essa vantagem é bem questionada e muitas pessoas não recomendam o seu uso em muitos casos.
+
+Essa é a codificação usada em sistemas Windows.
+
+UTF-32
+Essa codificação representa os caracteres em pedaços de 32 bits. Ela não é compatível com ASCII e ocupa 4 vezes mais espaço em textos que só utilizavam ASCII. Mesmo assim, diferentemente do UTF-8 e UTF-16, essa codificação tem um tamanho fixo e essa é sua grande vantagem. Como cada caractere ocupa a mesma quantidade de bits, é fácil saber em qual posição cada caractere está em um texto (é só pegar o índice do caractere e multiplicar por 32).
+
+# Lista
+
+Guarda na memória esses valores, espaços contínuos um do lado do outro
+
+se pensar numa situação que tem listas, a lista 1 armazenamento 1,2, a lista 2 que tem o elemento 3 e a lista 3 que tem o elemento 4; quero fazer uma lista de listas.
+Cada elemento nessa lista vai ser uma lista
+e o problema é que as listas têm tamanho variado - uma tem dois elementos, uma só tem um elemento,
+A solução para esse problema onde os elementos têm tamanho variado é que não vai guardar o conteúdo deles
+vamos guardar nessa lista o 1 e o 2, vamos guardar é o endereço dessas listas.
+Da mesma forma que L1 é o começo da lista [1,2], o mesmo para L2 e L3 são os começos das listas,
+ele vai chamar de endereço da lista e a parte boa disso: os endereços têm o mesmo tamanho.
+essa ideia é chamada de ponteiros
+
+ponteiro
+passagem por referencia
+Como sabemos o que é ponteiro, tem um conceito muito importante na computação que se você acaba não sabendo o que é isso, pode te dar alguns problemas no futuro
+const lista1
+const list2 = lista1
+sera sap duas lista diferentes com o mesmo valor? ou mesma lista com dois ponteiros apontado pra ela na memoria?
+Aconteceu que quando se faz a cópia do conteúdo de lista um para lista 2, na verdade estamos fazendo a cópia é da referência para o conteúdo da lista 1, na lista 1 tem um ponteiro para o conteúdo.
+Está apontando para uma região da memória onde estão os valores e quando faz a cópia disso faz também cópia para apontar para o mesmo endereço da memória, por isso faz a modificação - elemento de índice zero da lista dois também modifica o elemento zero da lista da lista 1.
+Porque eles estão apontando para os lugares, estão modificando o mesmo elemento, por isso que quando está trabalhando com listas e objetos que trabalham usando ponteiros, tem que ter muito cuidado ao fazer cópia dos elementos.
+
+# Números de ponto flutuante
+
+
+
+
+
+
+
+
+
