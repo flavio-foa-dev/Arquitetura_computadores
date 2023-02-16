@@ -514,6 +514,28 @@ Está apontando para uma região da memória onde estão os valores e quando faz
 Porque eles estão apontando para os lugares, estão modificando o mesmo elemento, por isso que quando está trabalhando com listas e objetos que trabalham usando ponteiros, tem que ter muito cuidado ao fazer cópia dos elementos.
 
 # Números de ponto flutuante
+notação científica
+como consegue apresentar um número grande usando notação científica?
+representacao 32 bits
+
+um bits usa para representar o sinal, 0 vira positivo um vira negativo,
+8 bits para representar o expoente.
+23 bits usa para coeficiente
+
+base que o expoente usa na notação científica do número de ponto flutuante e base 2 e não 10,
+ou seja, se quiser representar 0,5 não vai usar exatamente a notação científica base 10 que é 5x10-1 vai representar usando 1x2-1.
+
+### neste capitulo falamos sobre
+
+Como números inteiros, caracteres, listas e números decimais são armazenados na memória;
+O que são os formatos ASCII, Latin1, Unicode e qual sua relação com o UTF-8;
+A importância do contexto para o computador entender os dados que estão guardados na memória;
+Passagem de parâmetros por valor e por referência;
+Quais são os problemas inerentes aos números de ponto flutuante.
+
+
+
+
 
 
 
